@@ -29,6 +29,7 @@
                     
                     const x = data.map((row) => row.country); 
                     const y = data.map((row) => row.confirmed); 
+                    
 
                     // Create the Plotly.js bar chart
                     const trace = {
@@ -36,6 +37,9 @@
                         y: y,
                         type: "bar",
                         text: x, 
+                        marker: {
+                            color: 'blue'
+                        }   
                     };
 
                     const layout = {
@@ -44,6 +48,9 @@
                         yaxis: { title: "Confirmed Cases" },
                     };
 
+                    console.log(x);
+                    console.log(y);
+                    console.log([trace]);
                     Plotly.newPlot(graphDiv, [trace], layout);
                 });
         </script>

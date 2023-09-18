@@ -1,5 +1,13 @@
 {
+  "name": "oa-2023-24",
+  "version": "1.0.0",
+  "description": "covid data",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "csv-parser": "^3.0.0"
   }
+  
 }
