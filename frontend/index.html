@@ -1,10 +1,51 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <style>
+        
+            #graph {
+              background-color: #dac8c8; 
+              width: 80%; 
+              height: 400px; 
+              margin: 0 auto; 
+              padding: 20px; 
+              border: 1px solid #000000; 
+            }
+          </style>
+          
         <script src="https://cdn.plot.ly/plotly-2.25.2.min.js" charset="utf-8"></script>
-        <script type="module" src="graph.mjs"></script>
     </head>
     <body>
         <div id="graph"></div>
+
+        <script type="module">
+            // Your updated frontend code here
+            const graphDiv = document.getElementById("graph");
+
+            fetch("https://oa-2023-24-a1nx.onrender.com") // Replace with your backend's URL
+                .then(async (res) => {
+                    const data = await res.json();
+
+                    
+                    const x = data.map((row) => row.country); 
+                    const y = data.map((row) => row.confirmed); 
+
+                    // Create the Plotly.js bar chart
+                    const trace = {
+                        x: x,
+                        y: y,
+                        type: "bar",
+                        text: x, 
+                    };
+
+                    const layout = {
+                        title: "COVID-19 Confirmed Cases by Country/Region",
+                        xaxis: { title: "Country/Region" },
+                        yaxis: { title: "Confirmed Cases" },
+                    };
+
+                    Plotly.newPlot(graphDiv, [trace], layout);
+                });
+        </script>
     </body>
 </html>
